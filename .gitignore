@@ -327,3 +327,6 @@ sympy-plots-for-*.tex/
 
 # xindy
 *.xdy
+
+# Images
+*.jpg
