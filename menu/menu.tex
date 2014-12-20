@@ -1,0 +1,548 @@
+\documentclass[letterpaper, 12pt]{article}%
+
+\input{../flowfooter}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric,shadows}
+\usetikzlibrary{backgrounds}
+\tikzset{
+  sshadow/.style={opacity=1, shadow xshift=0.5, shadow yshift=-0.6},
+}
+
+\usepackage{graphicx}%
+\usepackage{tabularx}%
+\usepackage{multirow}
+\usepackage{environ}%
+\usepackage[sort&compress,numbers,super]{natbib}%
+\usepackage{achemso}%\usepackage[journal=jpccck,manuscript=article]{achemso}%
+\usepackage[version=3]{mhchem}% Formula subscripts using \ce{}%
+%\usepackage{fourier}%
+\usepackage[T1]{fontenc}%
+% \usepackage{lmodern}%
+\usepackage{times}%
+\usepackage{tgpagella}%
+% \renewcommand{\bfdefault}{bx}
+\usepackage{amsmath}%
+\usepackage{amssymb}%
+\usepackage{gensymb}%
+\usepackage[utf8]{inputenc}%
+\usepackage{geometry}% 
+\usepackage{placeins}%
+\usepackage{siunitx} % 
+\DeclareSIUnit[number-unit-product = \;]\ounce{oz.}
+\usepackage[config, labelfont={bf}]{caption,subfig}% nice sub figures
+\usepackage{enumitem}
+\setlist[itemize]{leftmargin=\mymargin}
+\newcommand\T{\rule{0pt}{2.6ex}}       % Top strut % http://tex.stackexchange.com/questions/50352/inserting-a-small-vertical-space-in-a-table
+\newcommand\B{\rule[-0.7ex]{0pt}{0pt}} % Bottom strut from -1.2ex
+
+\geometry{								% Changes paper size and borders
+ letterpaper,							% default letterpaper (for report class)
+ left = 0.4in,							% recommend 1.5in
+ right = 0.4in,						% recommend 1in
+ top = 0.4in,							% recommend 1in
+ bottom = 0.7in}						% recommend 1.375in
+%
+% \widowpenalty10000
+% \clubpenalty10000
+
+\usepackage{pbox}
+% \usepackage{array}
+% \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+% \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+% \newcolumntype{M}[1]{>{\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+% \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+\setlength\parindent{0pt}
+\setlength\parskip{1ex plus 0.2ex minus 0.4ex}
+\setcounter{secnumdepth}{0}
+\usepackage{fancyhdr}%
+\pagestyle{fancy}%
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\usepackage{lastpage}%http://tex.stackexchange.com/questions/227/how-can-i-add-page-of-on-my-document
+% \fancyfoot[R]{\texttt{http://www.linkedin.com/in/nathanielkbass/ $\bigstar$ nathaniel.k.bass@gmail.com\ }\hfil\thepage|\pageref{LastPage}}
+\pagenumbering{gobble}
+
+\newcommand{\menuitem}[4]{
+ \centering
+  $\bigstar$\\
+  \bigskip
+  % \textbf{\textsc{{\large#1}}}\vspace{-1ex}\\
+  \textbf{\sffamily \textsc{\large#2}}\vspace{-1ex}\\
+  \line(1,0){#1}\vspace{-2ex}\\
+  \line(1,0){#1}\vspace{0.5ex}\\
+  \smallskip
+  % \vspace{\stretch{1}}
+  % {\small#3}\\
+  % \bigskip
+  % \textbf{\textsc{\sffamily$\cdot$~tasting notes~$\cdot$}}\\
+  % \smallskip
+  \emph{\footnotesize#3}\\
+  % \bigskip
+  % \bigskip
+  \vspace*{\fill}
+  {\small#4}
+}
+
+\newcommand{\price}[2]{
+ \textsc{\small#1}~~\raisebox{0.2ex}{$\therefore$}~~\$~\textsc{\small#2}
+}
+
+\newcommand{\varprice}[1]{
+ \$~\textsc{\small#1}
+}
+
+\usepackage{environ}%
+\makeatletter
+\newcommand{\@leftimage}{}
+\newcommand{\@rightimage}{}
+\let\leftimage\@gobble
+\let\rightimage\@gobble
+\long\def\extractleftimage#1\leftimage#2#3\null{\renewcommand{\@leftimage}{#2}}
+\long\def\extractrightimage#1\rightimage#2#3\null{\renewcommand{\@rightimage}{#2}}
+\NewEnviron{foodstuff}{%
+  \expandafter\extractleftimage\BODY\null% Extract left image
+  \expandafter\extractrightimage\BODY\null% Extract right image
+  \noindent
+  \begin{tabularx}{\textwidth}{
+      @{} p{.15\textwidth}% Left image column
+      % p{.1\textwidth}% Left image column
+      X% Center text column
+      % p{.1\textwidth} % Right image column
+      p{.15\textwidth} @{}}% Right image column
+    & \strut%
+    % & \strut%
+    \if$\@leftimage$\else\llap{\raisebox{\dimexpr-\height+.7\normalbaselineskip}[0pt][0pt]{%
+      \includegraphics[width=.15\textwidth]{\@leftimage}\hspace*{\tabcolsep}}}\fi%
+    \BODY\par
+    \vspace*{-\normalbaselineskip}\leavevmode\hfill%
+    \strut%
+    \if$\@rightimage$\else\rlap{\hspace*{\tabcolsep}\raisebox{0pt}[0pt][0pt]{%
+      \includegraphics[width=.15\textwidth]{\@rightimage}}}\fi & %& 
+  \end{tabularx}
+}
+\NewEnviron{foodstuffleft}{%
+  \expandafter\extractleftimage\BODY\null% Extract left image
+  \noindent
+  \begin{tabularx}{\textwidth}{
+      @{} p{.2\textwidth}% Left image column
+      X @{}}% Center text column
+    & \strut%
+    \if$\@leftimage$\else\llap{\raisebox{\dimexpr-\height+.7\normalbaselineskip}[0pt][0pt]{%
+      \includegraphics[width=.2\textwidth]{\@leftimage}\hspace*{\tabcolsep}}}\fi%
+    \BODY\par
+    % \vspace*{-\normalbaselineskip}\leavevmode\hfill%
+    % \strut &%
+    % \if$\@rightimage$\else\rlap{\hspace*{\tabcolsep}\raisebox{0pt}[0pt][0pt]{%
+      % \includegraphics[height=.2\textwidth]{\@rightimage}}}\fi &
+  \end{tabularx}
+}
+\NewEnviron{foodstuffright}{%
+  \expandafter\extractrightimage\BODY\null% Extract left image
+  \noindent
+  \begin{tabularx}{\textwidth}{
+      @{} X% Center text column
+      p{.2\textwidth} @{}}% Left image column
+    % & 
+    \strut%
+    % \if$\@leftimage$\else\llap{\raisebox{\dimexpr-\height+.7\normalbaselineskip}[0pt][0pt]{%
+      % \includegraphics[width=.2\textwidth]{\@leftimage}\hspace*{\tabcolsep}}}\fi%
+    \BODY\par
+    \vspace*{-\normalbaselineskip}\leavevmode\hfill%
+    \strut &%
+    \if$\@rightimage$\else\rlap{\hspace*{\tabcolsep}\raisebox{0pt}[0pt][0pt]{%
+      \includegraphics[height=.2\textwidth]{\@rightimage}}}\fi &
+  \end{tabularx}
+}
+\newcommand{\fsr}[3]{
+ \begin{minipage}[t][#1\textwidth][b]{0.8\textwidth}
+  #2
+ \end{minipage}
+ \begin{minipage}[t][#1\textwidth][b]{0.2\textwidth}
+  \centering\includegraphics[height=#1\textwidth]{#3}
+ \end{minipage}
+}
+
+\makeatother
+\newcommand{\twoheading}[2]{{\large\bfseries #1\ \ \raisebox{0.2ex}{$\therefore$}\ }{\ \textsc{#2}\par}}
+\newcommand{\heading}[1]{{\large\bfseries #1\par}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\graphicspath{{../images/}}
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \mindent
+% \begin{tabular}{@{} p{0.075\textwidth} @{} p{0.3\textwidth} @{} p{0.25\textwidth} @{} p{0.3\textwidth} @{} p{0.075\textwidth} @{}}
+% &
+% \begin{minipage}[t][0.28\textwidth][b]{0.3\textwidth}%[][0.25\textwidth][]
+ % \centering
+ % \menuitem{75}{
+  % slow motion}{
+  % molasses~$\cdot$ cocoa~$\cdot$ smooth~$\cdot$ decaf}{
+  % Pour Over
+  
+  % \price{12 oz.}{4.00}
+ % }
+% \end{minipage} & 
+% \begin{minipage}[t][0.28\textwidth][b]{0.25\textwidth}%[][0.25\textwidth][]
+ % \centering
+ % \menuitem{40}{
+  % forty-six}{
+  % dark chocolate~$\cdot$ smoky~$\cdot$ full-bodied}{
+  % Automated Pour Over
+  
+  % \price{12 oz.}{2.50}
+  
+  % \price{16 oz.}{2.95}  
+  
+  % Pour Over
+  
+  % \price{12 oz.}{4.00}
+ % }
+% \end{minipage} & 
+% \begin{minipage}[t][0.28\textwidth][b]{0.3\textwidth}%[][0.25\textwidth][]
+ % \centering
+ % \menuitem{60}{
+  % idido}{
+  % concord~grape~$\cdot$ strawberry~jam}{
+  % Automated Pour Over
+  
+  % \price{12 oz.}{2.75}
+  
+  % \price{16 oz.}{3.20}
+  
+  % Pour Over
+  
+  % \price{12 oz.}{4.25}
+ % } 
+% \end{minipage} & \\
+% \rule{0pt}{4ex}&&&&\\
+% & \begin{minipage}[b][0.28\textwidth][b]{0.3\textwidth}%[][0.25\textwidth][]
+ % \centering
+ % \includegraphics[width=4cm]{flow_logo} 
+% \end{minipage} & 
+% \begin{minipage}[b][0.28\textwidth][b]{0.25\textwidth}%[][0.25\textwidth][]
+ % \menuitem{75}{
+  % hologram}{
+  % Fruity~$\cdot$ Milk Chocolate~$\cdot$ Syrupy }{
+  % \price{Espresso}{2.90}
+  
+  % \price{Macchiato}{3.25}
+  
+  % \price{Cortado}{3.50}
+  
+  % \price{Cappuccino}{3.75}
+  
+  % \price{Caff\`{e} Latte}{4.50}
+ % }
+% \end{minipage} %&&\\
+% & \begin{minipage}[b][0.28\textwidth][b]{0.3\textwidth}%[][0.25\textwidth][]
+ % \centering	
+ % \includegraphics[width=4cm]{flow_logo} 
+% \end{minipage}& \\
+% &&&&\\
+% \end{tabular}
+
+{\centering
+ \begin{minipage}[t][0.3\textwidth][b]{0.3\textwidth}
+  \centering
+  \menuitem{75}{
+   slow motion}{
+   molasses~$\cdot$ cocoa~$\cdot$ smooth~$\cdot$ decaf}{
+   Pour Over
+   
+   \price{12 oz.}{4.00}
+   
+   \vspace*{\fill}
+  }
+ \end{minipage} 
+ \begin{minipage}[t][0.3\textwidth][b]{0.3\textwidth}
+  \centering
+  \menuitem{40}{
+   forty-six}{
+   dark chocolate~$\cdot$ smoky~$\cdot$ full-bodied}{
+   Automated Pour Over
+   
+   \price{12 oz.}{2.50}
+   
+   \price{16 oz.}{2.95}   
+   
+   Pour Over
+   
+   \price{12 oz.}{4.00}
+  }
+ \end{minipage} 
+ \begin{minipage}[t][0.3\textwidth][b]{0.3\textwidth}
+  \centering
+  \menuitem{60}{
+   idido}{
+   concord~grape~$\cdot$ strawberry~jam}{
+   Automated Pour Over
+   
+   \price{12 oz.}{2.75}
+   
+   \price{16 oz.}{3.20}
+   
+   Pour Over
+   
+   \price{12 oz.}{4.25}
+  } 
+ \end{minipage} 
+ 
+}
+
+\rule{0pt}{4ex}
+
+{\centering
+ % \begin{minipage}[b][0.3\textwidth][b]{0.3\textwidth}
+  % \centering
+  % \includegraphics[width=4cm]{flow_logo} 
+ % \end{minipage}
+ \begin{minipage}[b][0.3\textwidth][b]{0.3\textwidth}
+  \menuitem{75}{
+   hologram}{
+   Fruity~$\cdot$ Milk Chocolate~$\cdot$ Syrupy }{
+   \price{Espresso}{2.90}
+   
+   \price{Macchiato}{3.25}
+   
+   \price{Cortado}{3.50}
+   
+   \price{Cappuccino}{3.75}
+   
+   \price{Caff\`{e} Latte}{4.50}
+  }
+ \end{minipage}
+ \begin{minipage}[b][0.3\textwidth][c]{0.3\textwidth}
+  \centering
+  \rule{2ex}{0pt}\includegraphics[height=0.9\textwidth]{flow_logo} 
+ \end{minipage}
+ \begin{minipage}[b][0.3\textwidth][b]{0.3\textwidth}
+  \centering  
+  \menuitem{113}{Barista's Choice}{
+   \textup{\normalsize Almond Milk Mocha}}{
+   \price{12 oz.}{5.00}
+   
+   \price{16 oz.}{5.50}
+   
+   \vspace*{\fill}
+  }
+ \end{minipage}
+ 
+}
+
+\bigskip
+
+\vspace{\stretch{1}}
+
+{\centering\menuitem{62}{Beer}{}{}
+
+}\vspace{-3ex}
+
+\begin{table}[h!]
+ \scshape
+ \centering
+ \begin{tabular}{@{} r | p{0.25cm} r l l @{}}
+  \textbf{Lambic} & & Lindemans & Framboise & \$ 7 \\
+  & & & Pomme & \$ 7 \\
+  & & & Cuv\'{e}e Ren\'{e} & \$ 7 \\
+  \textbf{Ale} & & Samuel Smith & Oatmeal Stout & \$ 5 \\
+  & & & Pale Ale & \$ 5 \\
+  & & & India Ale & \$ 5 \\
+  \textbf{Lager} & & & Organic Lager & \$ 5 \\
+  \textbf{Ale} & & Terrapin & H\textnormal{i}-F\textnormal{i}ve IPA & \$ 3 \\
+  & & & Recreation Ale IPA & \$ 3 \\
+  & & & Liquid Bliss & \$ 5 \\
+ \end{tabular}
+\end{table}
+
+\vspace{\stretch{3}}
+
+{\centering
+ \texttt{\large flowabrewparlor}
+ ~~\includegraphics{wifi}~~
+ \texttt{\large coffeetime}
+
+} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \begin{tabular}{@{} p{0.075\textwidth} @{} p{0.25\textwidth} @{} p{0.05\textwidth} @{} p{0.25\textwidth} @{} p{0.05\textwidth} @{} p{0.25\textwidth} @{} p{0.075\textwidth} @{}}
+% &
+% \rule{0pt}{4ex}&&&&\\
+% \end{tabular}
+
+% % \bigskip
+
+
+{\centering
+\begin{minipage}[t][0.2\textwidth][b]{0.3\textwidth}
+ \centering
+ \menuitem{60}{
+  Savory \& Sweet}{
+  \textup{\normalsize Vegan Curry}\\
+  sweet potato, chick pea}{
+  \varprice{7.00}
+ }
+\end{minipage}
+\begin{minipage}[t][0.2\textwidth][b]{0.3\textwidth}
+ \centering
+ \menuitem{40}{
+  Savory \& Sweet}{
+  \textup{\normalsize Strong Stock Farm Chili}\\
+  Strong Stock Farm, Knoxville, TN
+  }{
+  \varprice{7.00}
+ }
+\end{minipage}
+
+}\vspace{\stretch{1}}
+% \begin{minipage}[t][0.2\textwidth][b]{0.3\textwidth}
+ % \menuitem{62}{Savory \& Sweet}{
+  % \textup{\large Benton's Bacon Tomato Bisque}\vspace{5ex}}{
+  % \varprice{7.00}\\
+ % }%\vspace*{\fill}
+  % \rule{0pt}{3.5ex}
+% \end{minipage}
+% % % % % % % % % % % \begin{minipage}[t][0.2\textwidth][b]{0.3\textwidth}
+ % % % % % % % % % % % \menuitem{62}{Wild Love\\Old City Java}{
+  % % % % % % % % % % % \textup{\normalsize Baker's Choice}\vspace{1ex}
+  % % % % % % % % % % % }{
+  % % % % % % % % % % % \price{Muffin}{3.50}
+  
+  % % % % % % % % % % % \price{Tart}{3.50}
+  
+  % % % % % % % % % % % \price{Scone}{3.50}
+  
+  % % % % % % % % % % % \price{Cookie}{2.50}
+ % % % % % % % % % % % }
+% % % % % % % % % % % \end{minipage}
+
+{\centering
+\begin{minipage}[b][0.3\textwidth][b]{0.3\textwidth}
+ \centering
+ \menuitem{75}{
+  Farm to Griddle Cr\^{e}pes}{
+  \textup{\normalsize Sunburst Smoked Trout Rillet}\\
+  Sunburst Farms, Canton, NC
+  }{
+  \varprice{7.00}
+  
+  \vspace*{\fill}
+ }
+\end{minipage}
+ % \begin{minipage}[t][0.2\textwidth][b]{0.3\textwidth}
+ % \menuitem{62}{Savory \& Sweet}{
+  % \textup{\large Benton's Bacon Tomato Bisque}\vspace{5ex}}{
+  % \varprice{7.00}\\
+ % }%\vspace*{\fill}
+  % \rule{0pt}{3.5ex}
+% \end{minipage}
+\begin{minipage}[b][0.3\textwidth][t]{0.3\textwidth}
+ \menuitem{62}{Wild Love\\Old City Java}{
+  \textup{\normalsize Baker's Choice}\vspace{1ex}
+  }{
+  \price{Muffin}{3.50}
+  
+  \price{Tart}{3.50}
+  
+  \price{Scone}{3.50}
+  
+  \price{Cookie}{2.50}
+ }
+\end{minipage}
+
+}%\vspace{-3ex}
+
+\vspace{\stretch{2}}
+
+{\centering\heading{\LARGE Our Vendors}\vspace{-2ex}
+
+\line(1,0){400}\vspace{-2ex}\\
+\line(1,0){400}\vspace{-2ex}
+
+}
+
+{\centering
+ \begin{minipage}[t][0.3\textwidth][b]{0.29\textwidth}
+ \centering
+ % \includegraphics[scale=0.3]{counter_culture_3}
+ \includegraphics[scale=0.7]{counter_culture}
+ \end{minipage}
+ \begin{minipage}[t][0.3\textwidth][b]{0.42\textwidth}
+ \centering
+ \includegraphics[scale=0.25]{savory_and_sweet_2}
+ 
+ % \rule{0pt}{4ex}
+ 
+ \includegraphics[scale=0.45]{farm_to_griddle_2}
+ \end{minipage}
+ \begin{minipage}[t][0.3\textwidth][b]{0.28\textwidth}
+ \centering
+ \includegraphics[scale=0.35]{wild_love_old_city}
+ \end{minipage}
+ 
+}
+
+\vspace{5ex}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{foodstuff}
+ \rightimage{direct_trade} 
+ \leftimage{savory_and_sweet}
+ \raggedright 
+ \heading{Savory \& Sweet Truck}
+ \emph{\small
+  \raggedright 
+  % Knoxville has a long history of various forms of street food vendors such as chuck wagons, hot dog carts, ice cream trucks, etc. 
+  % However, the Savory \& Sweet Truck was the first modern-day food truck, a fully self-contained commercially licensed kitchen on wheels, to create more artisan, crafted food. 
+  Savory \& Sweet helped pioneer the gourmet mobile food movement in Knoxville by being the first to take the plunge in bringing a food truck to Knoxville and by working with the city of Knoxville to create food truck regulations for other mobile food vendors. 
+ }
+ 
+ \raggedleft
+ \heading{Counter Culture Coffee}
+ \emph{\small
+  \raggedleft
+  Since our founding in 1995, Counter Culture Coffee has represented a different way of bringing coffee to market: sourcing incredible handmade coffees directly from farmers and cooperatives, and roasting so that we bring out their unique flavors.
+  % We want to share these great coffees as the fresh, seasonal fruits that they are. 
+  % We only sell coffee at the peak of their flavor and freshness, so our selection of coffees grows and changes as we find other coffees to share. 
+  Our seasonal selection of single-origin coffees, microlots, and handcrafted blends are, to us, the best expression of coffee's diverse traditions and origins.
+ }
+\end{foodstuff}
+
+\begin{foodstuff}
+ \leftimage{farm_to_griddle}
+ \rightimage{wild_love_old_city}
+ \raggedright
+ \heading{Farm to Griddle Cr\^{e}pes}
+ \emph{\small
+  \raggedright
+  Knoxville's \emph{Chefs Collaborative} Leader Dave Thomasson is been at the forefront of the sustainable farm-to-table movement in the Knoxville region. % since he moved there from South Florida in 1976. 
+  % In 1979 he established Hoot Owl Hollow Organic Blueberries and Produce, a rural agro-eco destination now in its thirty third season. 
+  % He was a founding member of Knoxville Community Food Co-Op. 
+  % Professionally, Dave has also spent a lifetime working in environmental conservation, focusing on the role of gardening and small scale farming in sustainable development. 
+  % He brings a wealth of Southern food-ways knowledge to the job. 
+  % Working with local chef/owner Drew McDonald of the Plaid Apron cafe’, Dave’s goal is to help other chefs in the region connect to local and responsibly harvested products and producers, while networking with the larger culinary community to bring broader perspectives to our food system. 
+  % Today, 
+  Dave's passion for cooking is expressed through his mobile food business, Farm-to-Griddle Cr\^{e}pes, where he utilizes as many seasonal, locally-sourced products as possible.
+ }
+ 
+ \smallskip
+ 
+ \raggedleft
+ \heading{Old City Java's Wild Love Bakery}
+ \emph{\small
+  \raggedleft
+  Old City Java was founded in 1991, and has since added a bakery division, Wild Love. 
+  Coffee together with baked goods, what could be better!
+ }
+\end{foodstuff}
