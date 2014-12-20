@@ -330,6 +330,7 @@ sympy-plots-for-*.tex/
 
 # Images
 *.jpg
+Images/
 
 # Cleanup
 *.bat
