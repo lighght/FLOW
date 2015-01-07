@@ -334,4 +334,6 @@ images/
 
 # Cleanup
 *.bat
+flowheader.tex
+flowfooter.tex
 
