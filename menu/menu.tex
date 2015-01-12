@@ -1,6 +1,6 @@
 \documentclass[letterpaper, 12pt]{article}%
 
-\input{../flowfooter}
+% \input{../flowfooter}
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric,shadows}
 \usetikzlibrary{backgrounds}
@@ -16,6 +16,7 @@
 \usepackage{achemso}%\usepackage[journal=jpccck,manuscript=article]{achemso}%
 \usepackage[version=3]{mhchem}% Formula subscripts using \ce{}%
 %\usepackage{fourier}%
+\usepackage{shadowtext}
 \usepackage{calligra}
 \usepackage{inslrmin} % \iminfamily % \textimin
 \usepackage[T1]{fontenc}%
@@ -89,8 +90,9 @@
   {\small#4}
 }
 
+\newcommand{\flowtherefore}{~~\raisebox{0.2ex}{$\therefore$}~~}
 \newcommand{\price}[2]{
- \textsc{\small#1}~~\raisebox{0.2ex}{$\therefore$}~~\$~\textsc{\small#2}
+ \textsc{\small#1}\flowtherefore\$~\textsc{\small#2}
 }
 
 \newcommand{\varprice}[1]{
@@ -216,8 +218,8 @@
    Fruity~$\cdot$ Milk Chocolate~$\cdot$ Syrupy }{
    \begin{tabular}{@{} c c @{}}
    \price{Espresso}{2.90} & \price{Flat White}{4.00}\\
-   \price{Macchiato}{3.25} & \price{Caf\'{e} Miel}{3.50}\\
-   \price{Cortado}{3.50} & \price{Caf\'{e} au Lait}{4.50}\\
+   \price{Macchiato}{3.25} & \price{Caf\'{e} Miel}{4.50}\\
+   \price{Cortado}{3.95} & \price{Caf\'{e} au Lait}{4.50}\\
    \price{Cappuccino}{3.75} & \price{Caf\'{e} Cubano}{3.50}\\
    \price{Caff\`{e} Latte}{4.50} & \\
    \end{tabular}
@@ -289,12 +291,27 @@
   \menuitem{75}{
    slow motion}{
    molasses~$\cdot$ cocoa~$\cdot$ smooth~$\cdot$ decaf}{
-   Pour Over
+   \begin{tabular}{@{} c @{}}
+   Pour Over\\
+   \price{12 oz.}{4.00}\\
+   \end{tabular}
    
-   \price{12 oz.}{4.00}
-   
-   \rule{0pt}{0pt}
+   \rule{0pt}{1.1em}
    % \vspace*{\fill}
+  }
+ \end{minipage} 
+ \begin{minipage}[t][0.22\textwidth][b]{0.3\textwidth}
+  \centering
+  \menuitem{82}{
+   Cold Brew}{\vspace{-1ex}
+   }{
+   \begin{tabular}{@{} c @{}}
+   \price{Concentrate}{10.99}\\
+   \price{Ready-to-drink}{5.99}\\
+   \end{tabular}
+   
+   \rule{0pt}{2.2em}
+    
   }
  \end{minipage} 
  \begin{minipage}[t][0.22\textwidth][b]{0.3\textwidth}
@@ -308,7 +325,7 @@
    \price{16 oz.}{2.75} & \varprice{4.45}\\
    \end{tabular}
    
-   \rule{0pt}{1em}
+   \rule{0pt}{1.2em}
     
   }
  \end{minipage} 
@@ -357,7 +374,11 @@
  \end{tabular}
 \end{table}
 
-\vspace{-1.25em}
+\vspace{-1.0em}
+{\centering
+ \textbf{\textup{\normalsize\shadowcolor{yellow!70!black}\shadowtext{Double Buzz}}}\flowtherefore\price{\textrm{\emph{\normalsize Add a double-shot of espresso}}}{2.00}
+
+}
 
 \flowentry{}
 
