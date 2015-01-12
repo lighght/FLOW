@@ -1,6 +1,6 @@
 \documentclass[letterpaper, 12pt]{article}%
 
-\input{../flowfooter}
+% \input{../flowfooter}
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric,shadows}
 \usetikzlibrary{backgrounds}
@@ -16,6 +16,7 @@
 \usepackage{achemso}%\usepackage[journal=jpccck,manuscript=article]{achemso}%
 \usepackage[version=3]{mhchem}% Formula subscripts using \ce{}%
 %\usepackage{fourier}%
+\usepackage{shadowtext}
 \usepackage{calligra}
 \usepackage{inslrmin} % \iminfamily % \textimin
 \usepackage[T1]{fontenc}%
@@ -89,87 +90,15 @@
   {\small#4}
 }
 
+\newcommand{\flowtherefore}{~~\raisebox{0.2ex}{$\therefore$}~~}
 \newcommand{\price}[2]{
- \textsc{\small#1}~~\raisebox{0.2ex}{$\therefore$}~~\$~\textsc{\small#2}
+ \textsc{\small#1}\flowtherefore\$~\textsc{\small#2}
 }
 
 \newcommand{\varprice}[1]{
  \$~\textsc{\small#1}
 }
 
-\usepackage{environ}%
-\makeatletter
-\newcommand{\@leftimage}{}
-\newcommand{\@rightimage}{}
-\let\leftimage\@gobble
-\let\rightimage\@gobble
-\long\def\extractleftimage#1\leftimage#2#3\null{\renewcommand{\@leftimage}{#2}}
-\long\def\extractrightimage#1\rightimage#2#3\null{\renewcommand{\@rightimage}{#2}}
-\NewEnviron{foodstuff}{%
-  \expandafter\extractleftimage\BODY\null% Extract left image
-  \expandafter\extractrightimage\BODY\null% Extract right image
-  \noindent
-  \begin{tabularx}{\textwidth}{
-      @{} p{.15\textwidth}% Left image column
-      % p{.1\textwidth}% Left image column
-      X% Center text column
-      % p{.1\textwidth} % Right image column
-      p{.15\textwidth} @{}}% Right image column
-    & \strut%
-    % & \strut%
-    \if$\@leftimage$\else\llap{\raisebox{\dimexpr-\height+.7\normalbaselineskip}[0pt][0pt]{%
-      \includegraphics[width=.15\textwidth]{\@leftimage}\hspace*{\tabcolsep}}}\fi%
-    \BODY\par
-    \vspace*{-\normalbaselineskip}\leavevmode\hfill%
-    \strut%
-    \if$\@rightimage$\else\rlap{\hspace*{\tabcolsep}\raisebox{0pt}[0pt][0pt]{%
-      \includegraphics[width=.15\textwidth]{\@rightimage}}}\fi & %& 
-  \end{tabularx}
-}
-\NewEnviron{foodstuffleft}{%
-  \expandafter\extractleftimage\BODY\null% Extract left image
-  \noindent
-  \begin{tabularx}{\textwidth}{
-      @{} p{.2\textwidth}% Left image column
-      X @{}}% Center text column
-    & \strut%
-    \if$\@leftimage$\else\llap{\raisebox{\dimexpr-\height+.7\normalbaselineskip}[0pt][0pt]{%
-      \includegraphics[width=.2\textwidth]{\@leftimage}\hspace*{\tabcolsep}}}\fi%
-    \BODY\par
-    % \vspace*{-\normalbaselineskip}\leavevmode\hfill%
-    % \strut &%
-    % \if$\@rightimage$\else\rlap{\hspace*{\tabcolsep}\raisebox{0pt}[0pt][0pt]{%
-      % \includegraphics[height=.2\textwidth]{\@rightimage}}}\fi &
-  \end{tabularx}
-}
-\NewEnviron{foodstuffright}{%
-  \expandafter\extractrightimage\BODY\null% Extract left image
-  \noindent
-  \begin{tabularx}{\textwidth}{
-      @{} X% Center text column
-      p{.2\textwidth} @{}}% Left image column
-    % & 
-    \strut%
-    % \if$\@leftimage$\else\llap{\raisebox{\dimexpr-\height+.7\normalbaselineskip}[0pt][0pt]{%
-      % \includegraphics[width=.2\textwidth]{\@leftimage}\hspace*{\tabcolsep}}}\fi%
-    \BODY\par
-    \vspace*{-\normalbaselineskip}\leavevmode\hfill%
-    \strut &%
-    \if$\@rightimage$\else\rlap{\hspace*{\tabcolsep}\raisebox{0pt}[0pt][0pt]{%
-      \includegraphics[height=.2\textwidth]{\@rightimage}}}\fi &
-  \end{tabularx}
-}
-\newcommand{\fsr}[3]{
- \begin{minipage}[t][#1\textwidth][b]{0.8\textwidth}
-  #2
- \end{minipage}
- \begin{minipage}[t][#1\textwidth][b]{0.2\textwidth}
-  \centering\includegraphics[height=#1\textwidth]{#3}
- \end{minipage}
-}
-
-\makeatother
-\newcommand{\twoheading}[2]{{\large\bfseries #1\ \ \raisebox{0.2ex}{$\therefore$}\ }{\ \textsc{#2}\par}}
 \newcommand{\heading}[1]{{\large\bfseries #1\par}}
 
 \newcommand{\flowhead}{
@@ -206,18 +135,16 @@
 \flowentry{Espresso}
 
 \rule{0pt}{2ex}
-\newlength{\alengthfornow}
-\setlength{\alengthfornow}{0.26\textwidth}
 
 {\centering
- \begin{minipage}[b][\alengthfornow][b]{0.5\textwidth}
+ \begin{minipage}[b][0.26\textwidth][b]{0.5\textwidth}
   \menuitem{75}{
    hologram}{
    Fruity~$\cdot$ Milk Chocolate~$\cdot$ Syrupy }{
    \begin{tabular}{@{} c c @{}}
    \price{Espresso}{2.90} & \price{Flat White}{4.00}\\
-   \price{Macchiato}{3.25} & \price{Caf\'{e} Miel}{3.50}\\
-   \price{Cortado}{3.50} & \price{Caf\'{e} au Lait}{4.50}\\
+   \price{Macchiato}{3.25} & \price{Caf\'{e} Miel}{4.50}\\
+   \price{Cortado}{3.95} & \price{Caf\'{e} au Lait}{4.50}\\
    \price{Cappuccino}{3.75} & \price{Caf\'{e} Cubano}{3.50}\\
    \price{Caff\`{e} Latte}{4.50} & \\
    \end{tabular}
@@ -225,12 +152,12 @@
    \rule{0pt}{0pt}
   }
  \end{minipage}
- \begin{minipage}[b][\alengthfornow][b]{0.4\textwidth}
+ \begin{minipage}[b][0.26\textwidth][b]{0.4\textwidth}
   \centering  
   \menuitem{113}{Barista's Choice}{\\
    \textup{\normalsize Double Double}\vspace{0.5em}\\
    Samuel Smith's Double Chocolate Stout \vspace{0.1em}\\\&\vspace{-0.1em}\\ double-shot of Hologram espresso}{
-   \varprice{8.00}
+   \varprice{9.75}
    
    % \rule{0pt}{0pt}
   }
@@ -238,12 +165,7 @@
  
 }
 
-% % \bigskip 
-% \rule{0pt}{4ex}
-
 \flowentry{Coffee}
-
-% \rule{0pt}{2ex}
 
 {\centering
  \begin{minipage}[t][0.26\textwidth][b]{0.3\textwidth}
@@ -278,6 +200,20 @@
    \price{12 oz.}{4.25}
   } 
  \end{minipage} 
+ \begin{minipage}[t][0.22\textwidth][b]{0.3\textwidth}
+  \centering
+  \menuitem{70}{
+   slow motion}{
+   molasses~$\cdot$ cocoa~$\cdot$ smooth~$\cdot$ decaf}{
+   \begin{tabular}{@{} c @{}}
+   Pour Over\\
+   \price{12 oz.}{4.00}\\
+   \end{tabular}
+   
+   \rule{0pt}{1.1em}
+   % \vspace*{\fill}
+  }
+ \end{minipage} 
  
 }
 
@@ -286,15 +222,30 @@
 {\centering
  \begin{minipage}[t][0.22\textwidth][b]{0.3\textwidth}
   \centering
-  \menuitem{75}{
-   slow motion}{
-   molasses~$\cdot$ cocoa~$\cdot$ smooth~$\cdot$ decaf}{
-   Pour Over
+  \menuitem{92}{
+   Iced Coffee}{\vspace{-1ex}
+   }{
+   \begin{tabular}{@{} c @{}}
+   \price{12 oz.}{3.75}\\
+   \price{16 oz.}{3.95}\\
+   \end{tabular}
    
-   \price{12 oz.}{4.00}
+   \rule{0pt}{2.2em}
+    
+  }
+ \end{minipage} 
+ \begin{minipage}[t][0.22\textwidth][b]{0.3\textwidth}
+  \centering
+  \menuitem{82}{
+   Cold Brew}{\vspace{-1ex}
+   }{
+   \begin{tabular}{@{} c @{}}
+   \price{Concentrate}{10.99}\\
+   \price{Ready-to-drink}{5.99}\\
+   \end{tabular}
    
-   \rule{0pt}{0pt}
-   % \vspace*{\fill}
+   \rule{0pt}{2.2em}
+    
   }
  \end{minipage} 
  \begin{minipage}[t][0.22\textwidth][b]{0.3\textwidth}
@@ -308,7 +259,7 @@
    \price{16 oz.}{2.75} & \varprice{4.45}\\
    \end{tabular}
    
-   \rule{0pt}{1em}
+   \rule{0pt}{1.2em}
     
   }
  \end{minipage} 
@@ -336,9 +287,6 @@
 \flowhead
 
 \flowentry{Beer}
-% {\centering\menuitem{62}{Beer}{}{}
-% 
-% }\vspace{-3ex}
 
 \begin{table}[h!]
  \scshape
@@ -357,7 +305,11 @@
  \end{tabular}
 \end{table}
 
-\vspace{-1.25em}
+\vspace{-1.0em}
+{\centering
+ \textbf{\textup{\normalsize\shadowcolor{yellow!70!black}\shadowtext{Double Buzz}}}\flowtherefore\price{\textrm{\emph{\normalsize Add a double-shot of espresso}}}{2.00}
+
+}
 
 \flowentry{}
 
@@ -417,8 +369,6 @@
 
 }
 
-% }%\vspace{-3ex}
-
 \vspace{\stretch{2}}
 
 \begin{minipage}{\textwidth}
@@ -437,83 +387,3 @@
 \end{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-{\centering
- \begin{minipage}[t][0.3\textwidth][b]{0.29\textwidth}
- \centering
- % \includegraphics[scale=0.3]{counter_culture_3}
- \includegraphics[scale=0.7]{counter_culture}
- \end{minipage}
- \begin{minipage}[t][0.3\textwidth][b]{0.42\textwidth}
- \centering
- \includegraphics[scale=0.25]{savory_and_sweet_2}
- 
- % \rule{0pt}{4ex}
- 
- \includegraphics[scale=0.45]{farm_to_griddle_2}
- \end{minipage}
- \begin{minipage}[t][0.3\textwidth][b]{0.28\textwidth}
- \centering
- \includegraphics[scale=0.35]{wild_love_old_city}
- \end{minipage}
- 
-}
-
-% \vspace{5ex}
-
-{\centering\heading{\LARGE Our Vendors}\vspace{-2ex}
-
-\line(1,0){400}\vspace{-2ex}\\
-\line(1,0){400}\vspace{-2ex}
-
-}
-
-\begin{foodstuff}
- \rightimage{direct_trade} 
- \leftimage{savory_and_sweet}
- \raggedright 
- \heading{Savory \& Sweet Truck}
- \emph{\small
-  \raggedright 
-  % Knoxville has a long history of various forms of street food vendors such as chuck wagons, hot dog carts, ice cream trucks, etc. 
-  % However, the Savory \& Sweet Truck was the first modern-day food truck, a fully self-contained commercially licensed kitchen on wheels, to create more artisan, crafted food. 
-  Savory \& Sweet helped pioneer the gourmet mobile food movement in Knoxville by being the first to take the plunge in bringing a food truck to Knoxville and by working with the city of Knoxville to create food truck regulations for other mobile food vendors. 
- }
- 
- \raggedleft
- \heading{Counter Culture Coffee}
- \emph{\small
-  \raggedleft
-  Since our founding in 1995, Counter Culture Coffee has represented a different way of bringing coffee to market: sourcing incredible handmade coffees directly from farmers and cooperatives, and roasting so that we bring out their unique flavors.
-  % We want to share these great coffees as the fresh, seasonal fruits that they are. 
-  % We only sell coffee at the peak of their flavor and freshness, so our selection of coffees grows and changes as we find other coffees to share. 
-  Our seasonal selection of single-origin coffees, microlots, and handcrafted blends are, to us, the best expression of coffee's diverse traditions and origins.
- }
-\end{foodstuff}
-
-\begin{foodstuff}
- \leftimage{farm_to_griddle}
- \rightimage{wild_love_old_city}
- \raggedright
- \heading{Farm to Griddle Cr\^{e}pes}
- \emph{\small
-  \raggedright
-  Knoxville's \emph{Chefs Collaborative} Leader Dave Thomasson is been at the forefront of the sustainable farm-to-table movement in the Knoxville region. % since he moved there from South Florida in 1976. 
-  % In 1979 he established Hoot Owl Hollow Organic Blueberries and Produce, a rural agro-eco destination now in its thirty third season. 
-  % He was a founding member of Knoxville Community Food Co-Op. 
-  % Professionally, Dave has also spent a lifetime working in environmental conservation, focusing on the role of gardening and small scale farming in sustainable development. 
-  % He brings a wealth of Southern food-ways knowledge to the job. 
-  % Working with local chef/owner Drew McDonald of the Plaid Apron cafe’, Dave’s goal is to help other chefs in the region connect to local and responsibly harvested products and producers, while networking with the larger culinary community to bring broader perspectives to our food system. 
-  % Today, 
-  Dave's passion for cooking is expressed through his mobile food business, Farm-to-Griddle Cr\^{e}pes, where he utilizes as many seasonal, locally-sourced products as possible.
- }
- 
- \smallskip
- 
- \raggedleft
- \heading{Old City Java's Wild Love Bakery}
- \emph{\small
-  \raggedleft
-  Old City Java was founded in 1991, and has since added a bakery division, Wild Love. 
-  Coffee together with baked goods, what could be better!
- }
-\end{foodstuff}
