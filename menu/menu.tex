@@ -283,26 +283,42 @@
 
 \flowentry{Beer}
 
-\begin{table}[h!]
+\newlength{\beerwi}
+\newlength{\beerhi}
+\setlength{\beerwi}{0.43\textwidth}
+\setlength{\beerhi}{0.12\textwidth}
+
+{\centering
+\begin{minipage}[t][\beerhi][b]{\beerwi}
  \scshape
  \centering
- \begin{tabular}{@{} p{0.25cm} r l l @{}}
-  & Lindemans & Cuv\'{e}e Ren\'{e} & \varprice{12.00} \\
-  & & Framboise & \varprice{11.00} \\
-  & & Pomme & \varprice{11.00} \\
-  & Samuel Smith & Oatmeal Stout & \varprice{7.75} \\
-  & & Pale Ale & \varprice{7.75} \\
-  & & India Ale & \varprice{7.75} \\
-  & & Organic Lager & \varprice{7.75} \\
-  & & Organic Cider & \varprice{7.75} \\
-  & Terrapin & H\textnormal{i}-F\textnormal{i}ve IPA & \varprice{4.50} \\
-  & & Recreation Ale IPA & \varprice{4.50} \\
-  & & Seasonal & \varprice{4.50} \\
-  & SweetWater & Blue & \varprice{4.50} \\
+ \begin{tabular}{@{} r l l @{}}
+  Lindemans & Cuv\'{e}e Ren\'{e} & \varprice{12.00} \\
+  & Framboise & \varprice{11.00} \\
+  & Pomme & \varprice{11.00} \\
+  Samuel Smith & Oatmeal Stout & \varprice{7.75} \\
+  & Pale Ale & \varprice{7.75} \\
+  & India Ale & \varprice{7.75} \\
+  & Organic Lager & \varprice{7.75} \\
+  & Organic Cider & \varprice{7.75} \\
  \end{tabular}
-\end{table}
+\end{minipage}
+\begin{minipage}[t][\beerhi][b]{\beerwi}
+ \scshape
+ \centering
+ \begin{tabular}{@{} r l l @{}}
+  Terrapin & H\textnormal{i}-F\textnormal{i}ve IPA & \varprice{4.50} \\
+  & Recreation Ale IPA & \varprice{4.50} \\
+  & Moo-Hoo & \varprice{6.00} \\
+  & Liquid Bliss & \varprice{6.00} \\
+  SweetWater & Blue & \varprice{6.00} \\
+  & Spinnerbait & \varprice{6.00} \\
+ \end{tabular}
+\end{minipage}
 
-% \vspace{-1.0em}
+}
+
+\vspace{1.0em}
 {\centering
  \textbf{\textup{\normalsize\shadowcolor{yellow!70!black}\shadowtext{Double Buzz}}}\flowtherefore\price{\textrm{\emph{\normalsize Add a double-shot of espresso}}}{2.00}
 
@@ -310,7 +326,8 @@
 
 \flowentry{}
 
-\rule{0pt}{3em}
+% \rule{0pt}{3em}
+\vspace{\stretch{5}}
 
 \newlength{\ssminihi}
 \newlength{\ssminiwi}
@@ -370,7 +387,7 @@
 
 }
 
-\vspace{\stretch{2}}
+\vspace{\stretch{1}}
 
 \begin{minipage}{\textwidth}
  \begin{tikzpicture}
