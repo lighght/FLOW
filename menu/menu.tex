@@ -71,20 +71,12 @@
 \newcommand{\menuitem}[4]{
  \centering
   $\bigstar$\\
-  \bigskip
-  % \textbf{\textsc{{\large#1}}}\vspace{-1ex}\\
+  \smallskip\vspace{0.1em}
   \textbf{\sffamily \textsc{\large#2}}\vspace{-1ex}\\
   \line(1,0){#1}\vspace{-2ex}\\
   \line(1,0){#1}\vspace{0.5ex}\\
   \smallskip
-  % \vspace{\stretch{1}}
-  % {\small#3}\\
-  % \bigskip
-  % \textbf{\textsc{\sffamily$\cdot$~tasting notes~$\cdot$}}\\
-  % \smallskip
   \emph{\footnotesize#3}\\
-  % \bigskip
-  % \bigskip
   \vspace*{\fill}
   {\small#4}
 }
@@ -133,17 +125,16 @@
 
 \flowentry{Espresso}
 
-\rule{0pt}{2ex}
 
 {\centering
- \begin{minipage}[b][0.26\textwidth][b]{0.5\textwidth}
+ \begin{minipage}[t][0.26\textwidth][b]{0.5\textwidth}
   \menuitem{75}{
    hologram}{
    Fruity~$\cdot$ Milk Chocolate~$\cdot$ Syrupy }{
    \begin{tabular}{@{} c c @{}}
-   \price{Espresso}{2.90} & \price{Flat White}{4.00}\\
-   \price{Macchiato}{3.25} & \price{Caf\'{e} Miel}{4.50}\\
-   \price{Cortado}{3.95} & \price{Caf\'{e} au Lait}{4.50}\\
+   \price{Espresso}{2.90} & \\
+   \price{Macchiato}{3.25} & \price{Flat White}{4.00}\\
+   \price{Cortado}{3.95} & \price{Caf\'{e} Miel}{4.50}\\
    \price{Cappuccino}{3.75} & \price{Caf\'{e} Cubano}{3.50}\\
    \price{Caff\`{e} Latte}{4.50} & \\
    \end{tabular}
@@ -151,18 +142,21 @@
    \rule{0pt}{0pt}
   }
  \end{minipage}
- \begin{minipage}[b][0.26\textwidth][b]{0.4\textwidth}
+ \begin{minipage}[t][0.26\textwidth][b]{0.4\textwidth}
   \centering  
-  \menuitem{113}{Barista's Choice}{\\
-   \textup{\normalsize Double Double}\vspace{0.5em}\\
-   Samuel Smith's Double Chocolate Stout \vspace{0.1em}\\\&\vspace{-0.1em}\\ double-shot of Hologram espresso}{
-   \varprice{9.75}
+  \menuitem{113}{Barista's Choice}{\vspace{-0.5em}\\
+   \textup{\normalsize Liquid Bliss Porter Latte}\vspace{1.1em}\\
+   Terrapin Liquid Bliss Chocolate and Peanut Butter Porter\B\\
+   double-shot of Hologram espresso\T\\
+   homemade syrup \flowtherefore house whipped cream}{
+   \varprice{8.75}
    
-   % \rule{0pt}{0pt}
   }
  \end{minipage}
  
 }
+
+% \rule{0pt}{-1em}
 
 \flowentry{Coffee}
 
@@ -218,22 +212,24 @@
 
 \rule{0pt}{0pt}
 
+\newlength{\coffeerowtwo}
+\setlength{\coffeerowtwo}{0.2\textwidth}
 {\centering
- \begin{minipage}[t][0.22\textwidth][b]{0.3\textwidth}
-  \centering
-  \menuitem{92}{
-   Iced Coffee}{\vspace{-1ex}
-   }{
-   \begin{tabular}{@{} c @{}}
-   \price{12 oz.}{3.75}\\
-   \price{16 oz.}{3.95}\\
-   \end{tabular}
+ % \begin{minipage}[t][\coffeerowtwo][b]{0.3\textwidth}
+  % \centering
+  % \menuitem{92}{
+   % Iced Coffee}{\vspace{-1ex}
+   % }{
+   % \begin{tabular}{@{} c @{}}
+   % \price{12 oz.}{3.75}\\
+   % \price{16 oz.}{3.95}\\
+   % \end{tabular}
    
-   \rule{0pt}{2.2em}
+   % \rule{0pt}{2.2em}
     
-  }
- \end{minipage} 
- \begin{minipage}[t][0.22\textwidth][b]{0.3\textwidth}
+  % }
+ % \end{minipage} 
+ \begin{minipage}[t][\coffeerowtwo][b]{0.3\textwidth}
   \centering
   \menuitem{82}{
    Cold Brew}{\vspace{-1ex}
@@ -247,7 +243,8 @@
     
   }
  \end{minipage} 
- \begin{minipage}[t][0.22\textwidth][b]{0.3\textwidth}
+ \rule{3em}{0pt}
+ \begin{minipage}[t][\coffeerowtwo][b]{0.3\textwidth}
   \centering
   \menuitem{62}{
    Tea}{
@@ -263,13 +260,12 @@
   }
  \end{minipage} 
  
+ \vspace{\stretch{1}}
  \emph{choose to add: honey, vanilla, or mocha}
  
 }
 
-\bigskip
-
-\vspace{\stretch{1}}
+\vspace{\stretch{2}}
 
 
 {\centering
@@ -301,10 +297,12 @@
   & & Organic Cider & \varprice{7.75} \\
   & Terrapin & H\textnormal{i}-F\textnormal{i}ve IPA & \varprice{4.50} \\
   & & Recreation Ale IPA & \varprice{4.50} \\
+  & & Seasonal & \varprice{4.50} \\
+  & SweetWater & Blue & \varprice{4.50} \\
  \end{tabular}
 \end{table}
 
-\vspace{-1.0em}
+% \vspace{-1.0em}
 {\centering
  \textbf{\textup{\normalsize\shadowcolor{yellow!70!black}\shadowtext{Double Buzz}}}\flowtherefore\price{\textrm{\emph{\normalsize Add a double-shot of espresso}}}{2.00}
 
@@ -312,15 +310,19 @@
 
 \flowentry{}
 
-\rule{0pt}{1em}
+\rule{0pt}{3em}
 
-\newlength{\ssmini}
-\setlength{\ssmini}{0.2\textwidth}
+\newlength{\ssminihi}
+\newlength{\ssminiwi}
+\newlength{\ocminiwi}
+\setlength{\ssminihi}{0.14\textwidth}
+\setlength{\ssminiwi}{0.55\textwidth}
+\setlength{\ocminiwi}{0.15\textwidth}
 
 {\centering
 \begin{minipage}{0.5\textwidth}
 {\centering
-\begin{minipage}[t][\ssmini][b]{2.5\ssmini}
+\begin{minipage}[t][\ssminihi][b]{\ssminiwi}
  \centering
  \menuitem{60}{
   Savory \& Sweet}{
@@ -331,9 +333,9 @@
  }
 \end{minipage}
 
-\rule{0pt}{0.5em}
+\rule{0pt}{2em}
 
-\begin{minipage}[t][\ssmini][b]{2.5\ssmini}
+\begin{minipage}[t][\ssminihi][b]{\ssminiwi}
  \centering
  \menuitem{40}{
   Savory \& Sweet}{
@@ -349,7 +351,7 @@
 \rule{2em}{0pt}
 \begin{minipage}{0.3\textwidth}
 {\centering
-\begin{minipage}{\ssmini}
+\begin{minipage}{\ssminihi}
  \menuitem{62}{Wild Love\\Old City Java}{
   \textup{\normalsize Baker's Choice}\vspace{1ex}
   }{
