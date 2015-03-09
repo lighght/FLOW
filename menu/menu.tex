@@ -68,17 +68,31 @@
 % \fancyfoot[R]{\texttt{http://www.linkedin.com/in/nathanielkbass/ $\bigstar$ nathaniel.k.bass@gmail.com\ }\hfil\thepage|\pageref{LastPage}}
 \pagenumbering{gobble}
 
+\newcommand{\ill}{
+\includegraphics[width=2em]{../images/flow_logo_lcur}
+\includegraphics[width=10pt]{../images/flow_logo_ill}
+\includegraphics[width=2em]{../images/flow_logo_cur}
+}
+
+\newcommand{\menuentry}[2]{
+ \emph{\footnotesize#1}\\
+ \vspace*{\fill}
+ {\small#2}
+}
+
 \newcommand{\menuitem}[4]{
  \centering
-  $\bigstar$\\
+  % $\bigstar$\\
+  \ill\\
   \smallskip\vspace{0.1em}
   \textbf{\sffamily \textsc{\large#2}}\vspace{-1ex}\\
   \line(1,0){#1}\vspace{-2ex}\\
   \line(1,0){#1}\vspace{0.5ex}\\
   \smallskip
-  \emph{\footnotesize#3}\\
-  \vspace*{\fill}
-  {\small#4}
+  % \emph{\footnotesize#3}\\
+  % \vspace*{\fill}
+  % {\small#4}
+  \menuentry{#3}{#4}
 }
 
 \newcommand{\flowtherefore}{~~\raisebox{0.2ex}{$\therefore$}~~}
@@ -129,14 +143,14 @@
 {\centering
  \begin{minipage}[t][0.26\textwidth][b]{0.5\textwidth}
   \menuitem{75}{
-   hologram}{
+   forty-six}{
    Fruity~$\cdot$ Milk Chocolate~$\cdot$ Syrupy }{
    \begin{tabular}{@{} c c @{}}
-   \price{Espresso}{2.90} & \\
+   \price{Espresso}{2.90} & \price{Almond Milk Mocha}{5.00}\\
    \price{Macchiato}{3.25} & \price{Flat White}{4.00}\\
    \price{Cortado}{3.95} & \price{Caf\'{e} Miel}{4.50}\\
    \price{Cappuccino}{3.75} & \price{Caf\'{e} Cubano}{3.50}\\
-   \price{Caff\`{e} Latte}{4.50} & \\
+   \price{Caff\`{e} Latte}{4.50} & \price{Americano}{2.95}\\
    \end{tabular}
    
    \rule{0pt}{0pt}
@@ -146,16 +160,19 @@
   \centering  
   \menuitem{113}{Barista's Choice}{\vspace{-0.5em}\\
    \textup{\normalsize Liquid Bliss Porter Latte}\vspace{1.1em}\\
-   Terrapin Liquid Bliss Chocolate and Peanut Butter Porter\B\\
-   double-shot of Hologram espresso\T\\
-   homemade syrup \flowtherefore house whipped cream}{
+   House syrup made from Terrapin Liquid Bliss \\
+   \flowtherefore Double-shot of Forty-Six\flowtherefore\T\\
+   \flowtherefore House whipped cream\flowtherefore 
+   }{
+   % Chocolate and Peanut Butter Porter\B\\
    \varprice{8.75}
    
   }
  \end{minipage}
  
-}
+}\vspace{-1ex}
 
+\rule{5ex}{0pt}\textbf{\shadowcolor{yellow!70!black}\shadowtext{Little Bump}} \raisebox{-0.2ex}{\price{\normalfont{\emph{\footnotesize Double shot espresso with 7 oz. High Life chaser}}}{7.00}}
 % \rule{0pt}{-1em}
 
 \flowentry{Coffee}
@@ -180,8 +197,11 @@
  \begin{minipage}[t][0.26\textwidth][b]{0.3\textwidth}
   \centering
   \menuitem{60}{
-   idido}{
-   concord~grape~$\cdot$ strawberry~jam}{
+   apollo}{
+   Ethiopian seasonal \\
+   \flowtherefore Single origin \flowtherefore 
+   % concord~grape~$\cdot$ strawberry~jam
+   }{
    Fetco Drip
    
    \price{12 oz.}{2.75}
@@ -213,7 +233,7 @@
 \rule{0pt}{0pt}
 
 \newlength{\coffeerowtwo}
-\setlength{\coffeerowtwo}{0.2\textwidth}
+\setlength{\coffeerowtwo}{0.18\textwidth}
 {\centering
  % \begin{minipage}[t][\coffeerowtwo][b]{0.3\textwidth}
   % \centering
@@ -272,11 +292,12 @@
  \texttt{\large flowabrewparlor}
  ~~\includegraphics{wifi}~~
  \texttt{\large coffeetime}
+ \vspace{0.5em}
  
 } 
 
 {\centering
-\emph{reverse side for beer and local food selections}
+\textbf{\Large Side A}
 
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -304,8 +325,9 @@
   Samuel Smith & Oatmeal Stout & \varprice{7.75} \\
   & Pale Ale & \varprice{7.75} \\
   & India Ale & \varprice{7.75} \\
-  & Organic Lager & \varprice{7.75} \\
+  % & Organic Lager & \varprice{7.75} \\
   & Organic Cider & \varprice{7.75} \\
+  Highland & s\raisebox{2ex}{\tiny\underline{t}} Therese's Pale Ale & \varprice{5.50}
  \end{tabular}
 \end{minipage}
 \begin{minipage}[t][\beerhi][b]{\beerwi}
@@ -314,11 +336,12 @@
  \begin{tabular}{@{} r l l @{}}
   Terrapin & H\textnormal{i}-F\textnormal{i}ve IPA & \varprice{4.50} \\
   & Recreation Ale IPA & \varprice{4.50} \\
-  & Moo-Hoo & \varprice{6.00} \\
   & Liquid Bliss & \varprice{6.00} \\
+  & Seasonal & \varprice{6.00} \\
   SweetWater & Blue & \varprice{6.00} \\
   & Spinnerbait & \varprice{6.00} \\
   Anchor & Lager & \varprice{4.50} \\
+  Miller & High-Life & \varprice{2.00}\\
  \end{tabular}
 \end{minipage}
 
@@ -349,32 +372,61 @@
  \centering
  \menuitem{60}{
   Savory \& Sweet}{
-  \textup{\normalsize Sweet Potato \& Chickpea Curry}\\
-  Vegan curry with sweet potatoes, chickpeas, onions, carrots, bell peppers, peas and tomatoes in a coconut curry ginger broth. *Gluten--free
+  % \textup{\normalsize Sweet Potato \& Chickpea Curry}\\
+  % Vegan curry with sweet potatoes, chickpeas, onions, carrots, bell peppers, peas and tomatoes in a coconut curry ginger broth. *Gluten--free
+  \textup{\normalsize Hickory Smoked TN Pulled Pork BBQ Sandwich} % \\
   }{
   \varprice{7.00}
  }
-\end{minipage}
 
-\rule{0pt}{2em}
+\vspace{1em}
 
-\begin{minipage}[t][\ssminihi][b]{\ssminiwi}
- \centering
- \menuitem{40}{
-  Savory \& Sweet}{
-  \textup{\normalsize Beef Chili}\\
-  Strong Stock Farm's local grass-fed beef chili with tomatoes, black beans, pinto beans, bell peppers, onions and spices topped with candied jalape\~{n}os. *Gluten--free
+\menuentry{
+  \textup{\normalsize Benton's bacon, egg, and cheese melt}
   }{
-  \varprice{7.00}
- }
+  \varprice{5.50}
+}
+
+\vspace{1em}
+
+\menuentry{
+ \textup{\normalsize Beef Chili}\\
+ Strong Stock Farm's local grass-fed beef chili with tomatoes, black beans, pinto beans, bell peppers, onions and spices topped with candied jalape\~{n}os. *Gluten--free
+ }{
+ \varprice{7.00}
+}
 \end{minipage}
+
+% \rule{0pt}{2em}
+
+% \begin{minipage}[t][\ssminihi][b]{\ssminiwi}
+ % \centering
+ % \menuitem{40}{
+  % Savory \& Sweet}{
+  % \textup{\normalsize Beef Chili}\\
+  % Strong Stock Farm's local grass-fed beef chili with tomatoes, black beans, pinto beans, bell peppers, onions and spices topped with candied jalape\~{n}os. *Gluten--free
+  % }{
+  % \varprice{7.00}
+ % }
+% \end{minipage}
 
 }
 \end{minipage}
 \rule{2em}{0pt}
 \begin{minipage}{0.3\textwidth}
 {\centering
-\begin{minipage}{\ssminihi}
+% \begin{minipage}{\ssminihi}
+ % \menuitem{40}{
+  % Savory \& Sweet
+  % }{
+  % \textup{\normalsize Benton's bacon, egg, and cheese melt}
+  % }{
+  % \varprice{5.50}
+ % }
+% \end{minipage}
+
+
+\begin{minipage}[t][\ssminihi][b]{\ocminiwi}
  \menuitem{62}{Wild Love\\Old City Java}{
   \textup{\normalsize Baker's Choice}\vspace{1ex}
   }{
@@ -387,27 +439,31 @@
   \price{Cookie}{2.50}
  }
 \end{minipage}
+\vspace{1.5cm}
 
 }
 \end{minipage}
 
 }
+
 
 \vspace{\stretch{1}}
 
 \begin{minipage}{\textwidth}
  \begin{tikzpicture}
  % \draw[step=1cm,gray,very thin] (0,0) grid (19.5,3);%step=1cm,
- \node [inner sep=0pt] (cc) at (2.1,1.3) {\includegraphics[scale=0.5]{counter_culture}};
+ \node () at (0,0) {};
+ \node [inner sep=0pt] (cc) at (2.1,1.3) {\includegraphics[scale=0.095]{counter_culture_new}};
  \node [inner sep=0pt] (fg) at (6.3,1.3) {\includegraphics[scale=0.22]{farm_to_griddle_2}};
  \node [inner sep=0pt] (ss) at (11.,1.3) {\includegraphics[scale=0.14]{savory_and_sweet_2}};
  \node [inner sep=0pt] (wl) at (14.7,1.3) {\includegraphics[scale=0.2]{wild_love}};
  \node [inner sep=0pt] (wl) at (17.6,1.3) {\includegraphics[scale=0.25]{old_city}};
+ % \node [inner sep=0pt] (cc) at (2.1,1.3) {\includegraphics[scale=0.5]{counter_culture_old}};
  \end{tikzpicture}
 \end{minipage}
 
 {\centering
-\emph{reverse side for Counter Culture coffee selections}
+\textbf{\Large Side B}
 
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
