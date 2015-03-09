@@ -69,9 +69,9 @@
 \pagenumbering{gobble}
 
 \newcommand{\ill}{
-\includegraphics[width=2em]{../images/flow_logo_lcur}
+% \includegraphics[width=2em]{../images/flow_logo_lcur}
 \includegraphics[width=10pt]{../images/flow_logo_ill}
-\includegraphics[width=2em]{../images/flow_logo_cur}
+% \includegraphics[width=2em]{../images/flow_logo_cur}
 }
 
 \newcommand{\menuentry}[2]{
@@ -144,7 +144,9 @@
  \begin{minipage}[t][0.26\textwidth][b]{0.5\textwidth}
   \menuitem{75}{
    forty-six}{
-   Fruity~$\cdot$ Milk Chocolate~$\cdot$ Syrupy }{
+   % Fruity~$\cdot$ Milk Chocolate~$\cdot$ Syrupy 
+   dark chocolate~$\cdot$ smoky~$\cdot$ full-bodied}{
+   }{
    \begin{tabular}{@{} c c @{}}
    \price{Espresso}{2.90} & \price{Almond Milk Mocha}{5.00}\\
    \price{Macchiato}{3.25} & \price{Flat White}{4.00}\\
@@ -161,8 +163,8 @@
   \menuitem{113}{Barista's Choice}{\vspace{-0.5em}\\
    \textup{\normalsize Liquid Bliss Porter Latte}\vspace{1.1em}\\
    House syrup made from Terrapin Liquid Bliss \\
-   \flowtherefore Double-shot of Forty-Six\flowtherefore\T\\
-   \flowtherefore House whipped cream\flowtherefore 
+   $\cdot$ Double-shot of Forty-Six $\cdot$\T\\
+   $\cdot$ House whipped cream $\cdot$ 
    }{
    % Chocolate and Peanut Butter Porter\B\\
    \varprice{8.75}
@@ -172,7 +174,7 @@
  
 }\vspace{-1ex}
 
-\rule{5ex}{0pt}\textbf{\shadowcolor{yellow!70!black}\shadowtext{Little Bump}} \raisebox{-0.2ex}{\price{\normalfont{\emph{\footnotesize Double shot espresso with 7 oz. High Life chaser}}}{7.00}}
+\rule{5ex}{0pt}\textbf{\shadowcolor{yellow!70!black}\shadowtext{Little Bump}} \raisebox{-0.2ex}{\price{\normalfont{\emph{\footnotesize Double shot espresso with 7 oz. High Life chaser}}}{5.00}}
 % \rule{0pt}{-1em}
 
 \flowentry{Coffee}
@@ -314,22 +316,8 @@
 \setlength{\beerwi}{0.43\textwidth}
 \setlength{\beerhi}{0.12\textwidth}
 
-{\centering
-\begin{minipage}[t][\beerhi][b]{\beerwi}
- \scshape
- \centering
- \begin{tabular}{@{} r l l @{}}
-  Lindemans & Cuv\'{e}e Ren\'{e} & \varprice{12.00} \\
-  & Framboise & \varprice{11.00} \\
-  & Pomme & \varprice{11.00} \\
-  Samuel Smith & Oatmeal Stout & \varprice{7.75} \\
-  & Pale Ale & \varprice{7.75} \\
-  & India Ale & \varprice{7.75} \\
-  % & Organic Lager & \varprice{7.75} \\
-  & Organic Cider & \varprice{7.75} \\
-  Highland & s\raisebox{2ex}{\tiny\underline{t}} Therese's Pale Ale & \varprice{5.50}
- \end{tabular}
-\end{minipage}
+% {\centering
+\rule{0.5cm}{0pt}
 \begin{minipage}[t][\beerhi][b]{\beerwi}
  \scshape
  \centering
@@ -344,8 +332,24 @@
   Miller & High-Life & \varprice{2.00}\\
  \end{tabular}
 \end{minipage}
+\rule{1em}{0pt}
+\begin{minipage}[t][\beerhi][b]{\beerwi}
+ \scshape
+ \centering
+ \begin{tabular}{@{} r l l @{}}
+  Lindemans & Cuv\'{e}e Ren\'{e} & \varprice{12.00} \\
+  & Framboise & \varprice{11.00} \\
+  & Pomme & \varprice{11.00} \\
+  Samuel Smith & Oatmeal Stout & \varprice{7.75} \\
+  & Pale Ale & \varprice{7.75} \\
+  & India Ale & \varprice{7.75} \\
+  % & Organic Lager & \varprice{7.75} \\
+  & Organic Cider & \varprice{7.75} \\
+  Highland & S\raisebox{2ex}{\tiny\underline{t}} Therese's Pale Ale & \varprice{5.50}
+ \end{tabular}
+\end{minipage}
 
-}
+% }
 
 \vspace{1.0em}
 {\centering
