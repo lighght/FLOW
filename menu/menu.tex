@@ -10,11 +10,7 @@
 \usepackage{graphicx}%
 \usepackage{tabularx}%
 \usepackage{multirow}
-\usepackage{environ}%
-\usepackage[sort&compress,numbers,super]{natbib}%
-\usepackage{achemso}%\usepackage[journal=jpccck,manuscript=article]{achemso}%
-\usepackage[version=3]{mhchem}% Formula subscripts using \ce{}%
-%\usepackage{fourier}%
+
 \usepackage{shadowtext}
 \usepackage{calligra}
 \usepackage{inslrmin} % \iminfamily % \textimin
@@ -30,54 +26,30 @@
 \usepackage{amssymb}%
 \usepackage{gensymb}%
 \usepackage[utf8]{inputenc}%
-\usepackage{geometry}% 
-\usepackage{placeins}%
-\usepackage{siunitx} % 
-\DeclareSIUnit[number-unit-product = \;]\ounce{oz.}
-\usepackage[config, labelfont={bf}]{caption,subfig}% nice sub figures
-\usepackage{enumitem}
-\setlist[itemize]{leftmargin=\mymargin}
-\newcommand\T{\rule{0pt}{2.6ex}}       % Top strut % http://tex.stackexchange.com/questions/50352/inserting-a-small-vertical-space-in-a-table
-\newcommand\B{\rule[-0.7ex]{0pt}{0pt}} % Bottom strut from -1.2ex
 
+\usepackage{geometry}% 
 \geometry{								% Changes paper size and borders
  letterpaper,							% default letterpaper (for report class)
  left = 0.4in,							% recommend 1.5in
  right = 0.4in,						% recommend 1in
  top = 0.4in,							% recommend 1in
  bottom = 0.7in}						% recommend 1.375in
-%
-% \widowpenalty10000
-% \clubpenalty10000
-
-\usepackage{pbox}
-% \usepackage{array}
-% \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-% \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-% \newcolumntype{M}[1]{>{\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-% \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
 \setlength\parindent{0pt}
 \setlength\parskip{1ex plus 0.2ex minus 0.4ex}
-\setcounter{secnumdepth}{0}
-\usepackage{fancyhdr}%
-\pagestyle{fancy}%
-\fancyhf{}
-\renewcommand{\headrulewidth}{0pt}
-\usepackage{lastpage}%http://tex.stackexchange.com/questions/227/how-can-i-add-page-of-on-my-document
-% \fancyfoot[R]{\texttt{http://www.linkedin.com/in/nathanielkbass/ $\bigstar$ nathaniel.k.bass@gmail.com\ }\hfil\thepage|\pageref{LastPage}}
 \pagenumbering{gobble}
 
+\newcommand\T{\rule{0pt}{2.6ex}}       % Top strut % http://tex.stackexchange.com/questions/50352/inserting-a-small-vertical-space-in-a-table
+\newcommand\B{\rule[-0.7ex]{0pt}{0pt}} % Bottom strut from -1.2ex
+
 \newcommand{\ill}{
-% \includegraphics[width=2em]{../images/flow_logo_lcur}
-\includegraphics[width=10pt]{../images/flow_logo_ill}
-% \includegraphics[width=2em]{../images/flow_logo_cur}
+\includegraphics[width=10pt]{../images/flow_logo_ill} % \includegraphics[width=2em]{../images/flow_logo_cur} % \includegraphics[width=2em]{../images/flow_logo_lcur}
 }
 
 \newcommand{\menuentry}[2]{
- \emph{\footnotesize#1}\\
+ \emph{#1}\\ % \footnotesize
  \vspace*{\fill}
- {\small#2}
+ {#2} % \small
 }
 
 \newcommand{\menuitem}[4]{
@@ -89,9 +61,6 @@
   \line(1,0){#1}\vspace{-2ex}\\
   \line(1,0){#1}\vspace{0.5ex}\\
   \smallskip
-  % \emph{\footnotesize#3}\\
-  % \vspace*{\fill}
-  % {\small#4}
   \menuentry{#3}{#4}
 }
 
@@ -144,7 +113,6 @@
  \begin{minipage}[t][0.26\textwidth][b]{0.5\textwidth}
   \menuitem{75}{
    forty-six}{
-   % Fruity~$\cdot$ Milk Chocolate~$\cdot$ Syrupy 
    dark chocolate~$\cdot$ smoky~$\cdot$ full-bodied}{
    }{
    \begin{tabular}{@{} c c @{}}
@@ -166,25 +134,23 @@
    $\cdot$ Double-shot of Forty-Six $\cdot$\T\\
    $\cdot$ House whipped cream $\cdot$ 
    }{
-   % Chocolate and Peanut Butter Porter\B\\
    \varprice{8.75}
    
   }
  \end{minipage}
  
-} % \vspace{-1ex}
+} \vspace{-0.7ex}
 
-\vspace{0.5em}
+\rule{5ex}{0pt}
+\price{\normalfont{\emph{\normalsize Choose to add: honey, vanilla, mocha, or cinnamon}}}{0.75}
+
+\vspace{0.4ex}
 {\centering
-% \rule{5ex}{0pt}
-\textbf{\shadowcolor{yellow!70!black}\shadowtext{Little Bump}} \flowtherefore \price{\normalfont{\emph{\footnotesize Double shot espresso with 7 oz. High Life chaser}}}{5.00}\vspace{-0.5ex} % \raisebox{-0.2ex}{}
-
-% \rule{10ex}{0pt}
-\price{\normalfont{\emph{\footnotesize{choose to add: honey, vanilla, mocha, or cinnamon}}}}{0.75}
+\textbf{\shadowcolor{yellow!70!black}\shadowtext{Little Bump}} \flowtherefore \price{\normalfont{\emph{\normalsize Double espresso shot with 7 oz. High Life chaser}}}{5.00}\vspace{-0.5ex} % \raisebox{-0.2ex}{}
 
 }
 
-% \rule{0pt}{-1em}
+\vspace{1ex}
 
 \flowentry{Coffee}
 
@@ -228,14 +194,13 @@
   \centering
   \menuitem{70}{
    slow motion}{
-   molasses~$\cdot$ cocoa~$\cdot$ smooth~$\cdot$ decaf}{
+   decaf~$\cdot$ cocoa~$\cdot$ smooth~$\cdot$ molasses}{
    \begin{tabular}{@{} c @{}}
    Pour Over\\
    \price{12 oz.}{4.00}\\
    \end{tabular}
    
    \rule{0pt}{1.1em}
-   % \vspace*{\fill}
   }
  \end{minipage} 
  
@@ -291,8 +256,6 @@
   }
  \end{minipage} 
  
- \vspace{\stretch{1}}
- 
 }
 
 \vspace{\stretch{2}}
@@ -323,8 +286,6 @@
 \newlength{\beerhi}
 \setlength{\beerwi}{0.43\textwidth}
 \setlength{\beerhi}{0.14\textwidth}
-
-% {\centering
 \rule{0.5cm}{0pt}
 \begin{minipage}[t][\beerhi][b]{\beerwi}
  \scshape
@@ -337,8 +298,8 @@
   SweetWater & Blue & \varprice{6.00} \\
   & Seasonal & \varprice{6.00} \\
   Anchor & Lager & \varprice{4.50} \\
-  Stielgl & Pilsner & \varprice{mkt.}\\
-  & Radler & \varprice{mkt.}\\
+  Stiegl & Pilsner & \varprice{6.50}\\
+  & Radler & \varprice{6.50}\\
   Miller & High-Life & \varprice{2.00}\\
  \end{tabular}
 \end{minipage}
@@ -356,96 +317,57 @@
   % & Organic Lager & \varprice{7.75} \\
   & Nut Brown Ale & \varprice{7.75} \\
   & Organic Cider & \varprice{7.75} \\
-  Bitburger & Pilsner & \varprice{mkt.}\\
-  Rodenbach & Flemish Red & \varprice{mkt.}\\
+  Bitburger & Pilsner & \varprice{5.00}\\
+  Rodenbach & Flemish Red & \varprice{7.00}\\
   Highland & S\raisebox{2ex}{\tiny\underline{t}} Terese's Pale Ale & \varprice{5.50}
  \end{tabular}
 \end{minipage}
 
-% }
-
 \vspace{0.5em}
+
 {\centering
- \textbf{\textup{\normalsize\shadowcolor{yellow!70!black}\shadowtext{Double Buzz}}}\flowtherefore\price{\textrm{\emph{\normalsize Add a double-shot of espresso}}}{2.00}
+ \textbf{\textup{\normalsize\shadowcolor{yellow!70!black}\shadowtext{Double Buzz}}} \flowtherefore \price{\textrm{\emph{\normalsize Add a double espresso shot}}}{2.00}
 
 }
 
 \flowentry{}
 
-% \rule{0pt}{3em}
-\vspace{\stretch{3}}
+\vspace{\stretch{1}}
 
 \newlength{\ssminihi}
 \newlength{\ssminiwi}
-\newlength{\ocminiwi}
-\setlength{\ssminihi}{0.32\textwidth}
-\setlength{\ssminiwi}{0.57\textwidth}
-\setlength{\ocminiwi}{0.15\textwidth}
-
-{\centering
-\begin{minipage}{0.5\textwidth}
-{\centering
+\newlength{\wlminiwi}
+\setlength{\ssminihi}{0.36\textwidth}
+\setlength{\ssminiwi}{0.56\textwidth}
+\setlength{\wlminiwi}{0.19\textwidth}
+\rule{1.2cm}{0pt}
 \begin{minipage}[t][\ssminihi][b]{\ssminiwi}
- \centering
- \menuitem{60}{
+ \menuitem{120}{
   Savory \& Sweet}{
   % \textup{\normalsize Sweet Potato \& Chickpea Curry}\\
   % Vegan curry with sweet potatoes, chickpeas, onions, carrots, bell peppers, peas and tomatoes in a coconut curry ginger broth. *Gluten--free
   \textup{\normalsize TN Smoked Pork Sandwich}\\
-  TN pork, smoked and pulled, in a homemade BBQ sauce
+  {\footnotesize TN pork, smoked and pulled, in a homemade BBQ sauce}
+  }{
+  \varprice{6.25}
+ }\vspace{1.5ex}
+ 
+ \menuentry{
+  \textup{\normalsize Benton's Bacon Egg Cheese Melt}\\
+  {\footnotesize Benton's bacon, farm eggs, cheddar in a deviled egg mix melted on an English muffin}
+  }{
+  \varprice{5.50}
+ }\vspace{1.5ex}
+ 
+  \menuentry{
+  \textup{\normalsize Beef Chili}\\
+  {\footnotesize Strong Stock Farm's local grass-fed beef chili with tomatoes, black beans, pinto beans, bell peppers, onions and spices topped with candied jalape\~{n}os. *Gluten--free}
   }{
   \varprice{7.00}
  }
-
-\vspace{1em}
-
-\menuentry{
-  \textup{\normalsize Benton's Bacon Egg Cheese Melt}\\
-  Benton's bacon, farm eggs, cheddar in a deviled egg mix melted on an English muffin
-  }{
-  \varprice{5.50}
-}
-
-\vspace{1em}
-
-\menuentry{
- \textup{\normalsize Beef Chili}\\
- Strong Stock Farm's local grass-fed beef chili with tomatoes, black beans, pinto beans, bell peppers, onions and spices topped with candied jalape\~{n}os. *Gluten--free
- }{
- \varprice{7.00}
-}
 \end{minipage}
-
-% \rule{0pt}{2em}
-
-% \begin{minipage}[t][\ssminihi][b]{\ssminiwi}
- % \centering
- % \menuitem{40}{
-  % Savory \& Sweet}{
-  % \textup{\normalsize Beef Chili}\\
-  % Strong Stock Farm's local grass-fed beef chili with tomatoes, black beans, pinto beans, bell peppers, onions and spices topped with candied jalape\~{n}os. *Gluten--free
-  % }{
-  % \varprice{7.00}
- % }
-% \end{minipage}
-
-}
-\end{minipage}
-\rule{2em}{0pt}
-\begin{minipage}{0.3\textwidth}
-{\centering
-% \begin{minipage}{\ssminihi}
- % \menuitem{40}{
-  % Savory \& Sweet
-  % }{
-  % \textup{\normalsize Benton's bacon, egg, and cheese melt}
-  % }{
-  % \varprice{5.50}
- % }
-% \end{minipage}
-
-
-\begin{minipage}[t][\ssminihi][b]{\ocminiwi}
+\rule{1em}{0pt}
+\begin{minipage}[t][0.8\ssminihi][b]{\wlminiwi}
  \menuitem{62}{Wild Love\\Bakehouse}{
   \textup{\normalsize Baker's Choice}\vspace{1ex}
   }{
@@ -457,30 +379,22 @@
   
   \price{Cookie}{2.50}
   
-  \vspace{\stretch{1}}
-  
  }
+ \vspace{\stretch{1}}
 \end{minipage}
-\vspace{1.5cm}
+% }
 
-}
-\end{minipage}
-
-}
-
-
-\vspace{\stretch{1}}
+\vspace{\stretch{2.5}}
 
 \begin{minipage}{\textwidth}
  \begin{tikzpicture}
  % \draw[step=1cm,gray,very thin] (0,0) grid (19.5,3);%step=1cm,
- \node () at (-1.6,0) {};
+ \node () at (0,0) {};
  \node [inner sep=0pt] (cc) at (2.1,1.3) {\includegraphics[scale=0.095]{counter_culture_new}};
- \node [inner sep=0pt] (fg) at (6.3,1.3) {\includegraphics[scale=0.22]{farm_to_griddle_2}};
- \node [inner sep=0pt] (ss) at (11.,1.3) {\includegraphics[scale=0.14]{savory_and_sweet_2}};
- \node [inner sep=0pt] (wl) at (14.7,1.3) {\includegraphics[scale=0.2]{wild_love}};
- % \node [inner sep=0pt] (wl) at (17.6,1.3) {\includegraphics[scale=0.25]{old_city}};
- % \node [inner sep=0pt] (cc) at (2.1,1.3) {\includegraphics[scale=0.5]{counter_culture_old}};
+ \node [inner sep=0pt] (fg) at (6.3,1.3) {\includegraphics[scale=0.25]{farm_to_griddle_2}};
+ \node [inner sep=0pt] (ss) at (11.,1.3) {\includegraphics[scale=0.15]{savory_and_sweet_2}};
+ \node [inner sep=0pt] (wl) at (14.7,1.3) {\includegraphics[scale=0.25]{wild_love}};
+ \node [inner sep=0pt] (cf) at (17.4,1.3) {\includegraphics[scale=0.35]{cruze_patch_small}};
  \end{tikzpicture}
 \end{minipage}
 
