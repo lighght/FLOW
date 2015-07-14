@@ -1,0 +1,85 @@
+\documentclass[a0]{a0poster}
+\usepackage[absolute]{textpos}
+\TPGrid[0pt,0pt]{25}{14}
+
+\input{menupreamble}
+
+\let\oldsmall\small
+\renewcommand{\tiny}{\oldsmall}
+\let\oldnormalsize\normalsize
+\renewcommand{\scriptsize}{\oldnormalsize}
+\let\oldlarge\large
+\renewcommand{\footnotesize}{\oldlarge}
+\let\oldLarge\Large
+\renewcommand{\small}{\oldLarge}
+\let\oldLARGE\LARGE
+\renewcommand{\normalsize}{\oldLARGE}
+\let\oldhuge\huge
+\renewcommand{\large}{\oldhuge}
+\let\oldHuge\Huge
+\renewcommand{\Large}{\oldHuge}
+\let\oldveryHuge\veryHuge
+\renewcommand{\LARGE}{\oldveryHuge}
+\let\oldVeryHuge\VeryHuge
+\renewcommand{\huge}{\oldVeryHuge}
+\let\oldVERYHuge\VERYHuge
+\renewcommand{\Huge}{\oldVERYHuge}
+
+\renewcommand{\ill}{\Ill{40}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{textblock}{25}(0,0.2)
+\Flowhead{1189mm}{6.1}{3.1}{8.5}{11}{1.6}
+\end{textblock}
+
+\begin{textblock}{7}(1,2.5)
+  \flowentry{Espresso}
+\end{textblock}
+
+\begin{textblock}{7}(1,3.5)
+  \centering
+  \menuitem{75}{
+   forty-six}{
+   dark chocolate~$\cdot$ smoky~$\cdot$ full-bodied}{
+   }{
+   \begin{tabular}{@{} r r @{}}
+   \price{Espresso}{2.90} & \price{Almond Milk Mocha}{5.00}\\
+   \price{Macchiato}{3.25} & \price{Flat White}{4.00}\\
+   \price{Cortado}{3.95} & \price{Caf\'{e} Miel}{4.50}\\
+   \price{Cappuccino}{3.75} & \price{Caf\'{e} Cubano}{3.50}\\
+   \price{Caff\`{e} Latte}{4.50} & \price{Americano}{2.95}\\
+   \price{Bee Sting}{3.50} & \price{Caf\'{e} Crema}{3.50}\\
+   \price{Iced Apollo}{3.65} & \price{Liquid Bliss Porter Latte}{6.00}\\
+   \end{tabular}
+  }
+\end{textblock}
+
+\begin{textblock}{7}(1,7.5)
+  \menuitem{113}{Barista's Choice}{\vspace{-0.5em}\\ 
+   \textup{\normalsize Iced\hspace{0.25ex} \raisebox{-0.5ex}{\includegraphics[height=1.38em]{flow.pdf}} Brew}\vspace{1.1em}\\
+   $\cdot$ Double Shot of \textsc{Forty-Six} Espresso $\cdot$\\
+   $\cdot$ \textsc{Apollo} Iced Coffee $\cdot$\\
+   $\cdot$ Honey \& Cinnamon $\cdot$\\
+   $\cdot$ Cruze Farm Dairy $\cdot$
+   }{
+   \varprice{5.50}\vspace{2ex}
+   
+  }
+\end{textblock}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\let\old%%%\%%%
+\renewcommand{}{\old%%%}
+fontnames = ['tiny', 'scriptsize', 'footnotesize', 'small', 'normalsize', 'large', 'Large', 'LARGE', 'huge', 'Huge', 'veryHuge', 'VeryHuge', 'VERYHuge', ]
+for i in xrange(len(fontnames)-3):
+    print '\\let\\old{0}\\{0}\r\n\\renewcommand{{\\{1}}}{{\\old{0}}}'.format(fontnames[i+3], fontnames[i])
+
+% 1 7 1 7 1  7  1  ***X*** 1 12 1
+% 0  1 8  9 16  17 24  (25) ***X*** 0  1 13  (14)

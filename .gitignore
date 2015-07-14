@@ -337,3 +337,7 @@ images/*
 flowheader.tex
 flowfooter.tex
 
+*.ps
+menu/mwe.pdf
+menu/mwe.tex
+menu/poster-template-landscape.tex
