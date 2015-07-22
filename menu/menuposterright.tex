@@ -1,0 +1,81 @@
+\documentclass[a0,portrait]{a0poster}
+\usepackage[absolute]{textpos}
+% \TPGrid[0pt,0pt]{25}{14}
+\TPGrid[0pt,0pt]{15}{25}
+
+\input{menupreamble}
+
+\let\oldnormalsize\normalsize
+\renewcommand{\tiny}{\oldnormalsize}
+\let\oldlarge\large
+\renewcommand{\scriptsize}{\oldlarge}
+\let\oldLarge\Large
+\renewcommand{\footnotesize}{\oldLarge}
+\let\oldLARGE\LARGE
+\renewcommand{\small}{\oldLARGE}
+\let\oldhuge\huge
+\renewcommand{\normalsize}{\oldhuge}
+\let\oldHuge\Huge
+\renewcommand{\large}{\oldHuge}
+\let\oldveryHuge\veryHuge
+\renewcommand{\Large}{\oldveryHuge}
+\let\oldVERYHuge\VERYHuge
+\renewcommand{\LARGE}{\oldVERYHuge}
+
+\renewcommand{\ill}{\Ill{40}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{textblock}{14}(0,0.5)
+\Flowhead{1189mm}{6.1}{3.1}{0}{0}{0}
+\end{textblock}
+
+\begin{textblock}{13}(1,3)
+  \Flowentry{Beer}{1700}
+\end{textblock}
+
+\begin{textblock}{8}(3.5,4.5)
+  \centering
+  \normalsize
+  \textit{
+  When it's time to transition, \FLOW has your back.\\
+  As a matter of fact, we like beer---and we know a few good ones if you want to come in and have a glass with us. 
+  Many styles are represented, and our selection is changing all the time. 
+  You might find something you didn't expect!
+  }
+\end{textblock}
+
+\begin{textblock}{10}(2.5,7.5)
+  \centering
+  \menuitem{475}{
+   some of our favorite styles}{}{}
+   
+   \textsc{\LARGE
+   belgian~ale\flowtherefore
+   porter\flowtherefore ipa\\
+   american~lager\flowtherefore
+   brown~ale\\
+   german~lager\flowtherefore
+   irish~stout\\
+   }
+\end{textblock}
+
+\begin{textblock}{13}(1,14)
+  \Flowentry{Food}{1700}
+\end{textblock}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\let\old%%%\%%%
+\renewcommand{}{\old%%%}
+fontnames = ['tiny', 'scriptsize', 'footnotesize', 'small', 'normalsize', 'large', 'Large', 'LARGE', 'huge', 'Huge', 'veryHuge', 'VeryHuge', 'VERYHuge', ]
+for i in xrange(len(fontnames)-5):
+    print '\\let\\old{0}\\{0}\r\n\\renewcommand{{\\{1}}}{{\\old{0}}}'.format(fontnames[i+5], fontnames[i])
+
+% 1 7 1 7 1  7  1  ***X*** 1 12 1
+% 0  1 8  9 16  17 24  (25) ***X*** 0  1 13  (14)
